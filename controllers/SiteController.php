@@ -65,16 +65,20 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $todat=date('Y-m-d');
-        $patients=Patients::find()->count();
+       /* $patients=Patients::find()->count();
         $medi=Medicines::find()->count();
         $rec=Receipts::find()->count();
-        $rect=Receipts::find()->where(['LIKE','created_at', '%'.$todat . '%', false])->count();
+        $rect=Receipts::find()->where(['LIKE','created_at', '%'.$todat . '%', false])->count();*/
+
+        if (Yii::$app->user->isGuest) {
+            return $this->redirect("/site/login");
+        }
         return $this->render('index',
         [
-            'patients'=>$patients,
-            'medi'=>$medi,
-            'rec'=>$rec,
-            'rect'=>$rect,
+            'patients'=>0,
+            'medi'=>0,
+            'rec'=>0,
+            'rect'=>0,
         ]
         );
     }

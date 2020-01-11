@@ -142,6 +142,10 @@ class ReceiptController extends Controller
             'mode' => Pdf::MODE_CORE,
             // A4 paper format
             'format' => Pdf::FORMAT_A4,
+            'marginTop' => 3    ,
+            'marginBottom' => 0    ,
+            'marginLeft' => 7    ,
+            'marginRight' => 7    ,
             // portrait orientation
             'orientation' => Pdf::ORIENT_LANDSCAPE,
             // stream to browser inline
@@ -152,7 +156,9 @@ class ReceiptController extends Controller
             // enhanced bootstrap css built by Krajee for mPDF formatting
             //'cssFile' => '@vendor/kartik-v/yii2-mpdf/src/assets/kv-mpdf-bootstrap.min.css',
             // any css to be embedded if required
-            'cssInline' =>'',
+            'cssInline' =>'.tabless {
+  border: 1px solid gray;
+}',
             // set mPDF properties on the fly
             'options' => ['title' => 'Krajee Report Title'],
             // call mPDF methods on the fly
