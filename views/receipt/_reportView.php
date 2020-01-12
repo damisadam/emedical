@@ -1,8 +1,4 @@
-<div class="row">
-    <div class="col-lg-12">
-        <p style="text-align: center">If you need to use the component for advanced PDF rendering or using various other mPDF manipulations, then you could directly.</p>
-    </div>
-</div>
+
 <div class="" style="width: 100%;">
     <table>
         <tbody>
@@ -32,7 +28,7 @@
             <tr>
                 <td colspan="3">
                     <br/>
-                    <p>Not valid for court evidence</p>
+                    <br/>
                 </td>
             </tr>
 
@@ -148,15 +144,16 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="3"><br/><br/><br/><br/><br/><br/></td>
+                <td colspan="3" height="825px"></td>
             </tr>
             <tr >
                 <td colspan="3" >
                     <table style="width: 100%" width="100%" >
                         <tbody>
                         <tr>
-                            <td width="30%" style="text-align: right">For Appointment:</td>
-                            <td width="40%">0300-5246762<br>044-43343434</td>
+                            <td width="40%">Not Valid for court evedance</td>
+                            <td width="30%">
+                                For Appointment:<br></br>0300-5246762<br>044-43343434</td>
                             <td width="30%" style="text-align: right">Timing 3AM - 8PM
                             <br><span style="background-color: #0f0f0f;color: white">Closed at Sunday</span></td>
 

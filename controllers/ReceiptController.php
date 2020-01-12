@@ -142,12 +142,13 @@ class ReceiptController extends Controller
             'mode' => Pdf::MODE_CORE,
             // A4 paper format
             'format' => Pdf::FORMAT_A4,
-            'marginTop' => 3    ,
+            'marginTop' => 10    ,
             'marginBottom' => 0    ,
-            'marginLeft' => 7    ,
-            'marginRight' => 7    ,
+            'marginLeft' => 5    ,
+            'marginRight' => 5    ,
+            'defaultFontSize' => 100   ,
             // portrait orientation
-            'orientation' => Pdf::ORIENT_LANDSCAPE,
+            'orientation' => Pdf::ORIENT_PORTRAIT,
             // stream to browser inline
             'destination' => Pdf::DEST_BROWSER,
             // your html content input
