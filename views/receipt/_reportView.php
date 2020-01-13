@@ -1,92 +1,102 @@
 
-<div class="" style="width: 100%;">
+<div  style="width: 820px;">
     <table>
         <tbody>
             <tr>
-                <td width="50%" style="border-bottom: 1px solid gray">
-                    <p style="font-weight: bolder; font-size: 28px">Sadam Hussain</p>
+                <td width="415px" style="border-bottom: 1px solid gray">
+                    <?php if(isset($model->doctor)){
+                        $exp_edu_detail=$model->doctor->exp_edu_detail;
+                        $exp_edu_detail=explode(",",$exp_edu_detail);
+                        ?>
+                    <p style="font-weight: bolder; font-size: 28px"><?=$model->doctor->name ?></p>
                     <p >
-                        MBBS, MSc (Audiological Medicine)
-                        <br>
-                        MBBS, MSc (Audiological Medicine)
-                        <br>
-                        MBBS, MSc (Audiological Medicine)
-                        <br>
-                        Specialist Audiologist, Department of Otolaryngology, Shalamar Hospital
+                        <?php foreach ($exp_edu_detail as $exp){ ?>
+                            <span><?=$exp?><br/></span>
+                        <?php }?>
                     </p>
+                    <?php } ?>
                 </td>
-                <td width="10%"></td>
-                <td width="40%">
+                <td width="100px"></td>
+                <td width="305px">
                     <div style="">
+                        <br>
                         <p>Address:</p>
-                        <p style="font-size: 18px; font-weight: bolder">Specialist Audiologist, Department of</p>
-                        <p >Specialist Audiologist, Department of Otolaryngology Otolaryngology</p>
+                        <?php if(isset($model->doctor)){
+                        $exp_edu_detail=$model->doctor->address;
+                        $address=explode(",",$exp_edu_detail);
+                        ?>
+                        <p style="font-size: 18px; font-weight: bolder"><?= (isset($address[0]))?$address[0]:""?></p>
+                        <p ><?= (isset($address[1]))?$address[1]:""?></p>
+                        <?php } ?>
                     </div>
                 </td>
             </tr>
 
             <tr>
-                <td colspan="3">
-                    <br/>
-                    <br/>
+                <td colspan="3" height="80px">
+
                 </td>
             </tr>
 
             <tr >
-                <td colspan="3">
-                    <table class="tabless" style="width: 100%" >
+                <td colspan="3" style="width:  820px">
+                    <table class="tabless" style="width:  820px" >
                         <tbody >
                             <tr >
-                                <td width="20%" height="350px" style="border-right: 1px solid gray;vertical-align: top;">
-                                    <table width="100%">
+                                <td width="70px" height="650px" style="border-right: 1px solid gray;vertical-align: top;">
+                                    <table width="100px">
                                         <tbody>
                                             <tr>
-                                                <td height="80">
-                                                    <ul>
-                                                        <li>as</li>
-                                                        <li>as</li>
-                                                        <li>as</li>
-                                                        <li>as</li>
-                                                    </ul>
+                                                <td  height="120" style="border-bottom: 1px solid gray;vertical-align: top;" >
+                                                    <span><?=$model->body_deail?></span>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td height="80">
-                                                    <p><b>Diagonises</b></p>
+                                                <td height="120" style="border-bottom: 1px solid gray;vertical-align: top;">
+                                                    <p><b>Diagnosis</b></p>
                                                     <br/>
-                                                    <p>dsdds,dsd,sd,sds,ds,ds,ds</p>
+                                                    <span><?=$model->diagnosis?></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="120" style="border-bottom: 1px solid gray;vertical-align: top;">
+                                                    <p><b>Symptoms</b></p>
+                                                    <br/>
+                                                    <span><?=$model->symptoms?></span>
                                                 </td>
                                             </tr>
 
                                             <tr>
-                                                <td height="80">
+                                                <td height="120" style="border-bottom: 1px solid gray;vertical-align: top;">
                                                     <p><b>Test Advices</b></p>
                                                     <br/>
-                                                    <p>dsdds,dsd,sd,sds,ds,ds,ds</p>
+                                                    <span><?=$model->test_advised?></span>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td height="80">
-                                                    <p><b>Calinic Note</b></p>
+                                                <td height="120" style="vertical-align: top;">
+                                                    <p><b>Clinical Note</b></p>
                                                     <br/>
-                                                    <p>dsdds,dsd,sd,sds,ds,ds,ds</p>
+                                                    <span><?= $model->cilinical_note?></span>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
 
                                 </td>
-                                <td width="80%" height="350px" style="vertical-align: top;">
-                                    <table class="" style="width: 100%;">
+                                <td width="720px" height="650px" style="vertical-align: top;">
+                                    <table class="" style="width: 720px;">
                                         <tbody>
+                                        <?php if(isset($model->patient)){ ?>
                                             <tr style="border-bottom: 1px solid gray">
                                                 <td><b>Name:</b></td>
-                                                <td>Sadam Hussain</td>
+                                                <td><?=$model->patient->name?></td>
                                                 <td><b>Age:</b></td>
-                                                <td>26</td>
+                                                <td><?=$model->patient->age?></td>
                                                 <td><b>Gender: </b></td>
-                                                <td>Male</td>
+                                                <td><?=$model->patient->gender?></td>
                                             </tr>
+                                        <?php } ?>
                                             <tr><td colspan="6" style="border-bottom: 1px solid gray;padding-top: -10px"><br></td></tr>
                                             <tr>
                                                 <td colspan="3" style="text-align: center;font-weight: bold">Medicines</td>
@@ -95,30 +105,15 @@
                                                 <td><b>Evening</b></td>
                                             </tr>
                                             <tr><td colspan="6"><br></td></tr>
+                                            <?php foreach ($model->mediciness as $key=>$medicine) { if($medicine->medicine){ ?>
                                             <tr >
-                                                <td colspan="3" height="40px">sadam</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
+                                                <td colspan="3" height="40px"><?=$medicine->medicine->name?></td>
+                                                <td><?=$medicine->morning?></td>
+                                                <td><?=$medicine->afternoon?></td>
+                                                <td><?=$medicine->evening?></td>
                                             </tr>
-                                            <tr>
-                                                <td height="40px" colspan="3">sadam</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td height="40px" colspan="3">sadam</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3">sadam</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                                <td>1</td>
-                                            </tr>
+                                        <?php }} ?>
+
                                         </tbody>
                                     </table>
                                 </td>
@@ -144,18 +139,30 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="3" height="825px"></td>
+                <td colspan="3" height="450px"></td>
             </tr>
             <tr >
                 <td colspan="3" >
                     <table style="width: 100%" width="100%" >
                         <tbody>
                         <tr>
-                            <td width="40%">Not Valid for court evedance</td>
+                            <td width="40%"><b>Not Valid for court evidence</b></td>
                             <td width="30%">
-                                For Appointment:<br></br>0300-5246762<br>044-43343434</td>
-                            <td width="30%" style="text-align: right">Timing 3AM - 8PM
-                            <br><span style="background-color: #0f0f0f;color: white">Closed at Sunday</span></td>
+                                <?php if(isset($model->doctor)){
+                                ?>
+                                For Appointment:<br></br><?=$model->doctor->phone?><br><?=$model->doctor->tel?></td>
+                            <?php }?>
+
+                            <td width="30%" style="text-align: right">
+
+                                <?php if(isset($model->doctor)){
+                                $exp_edu_detail=$model->doctor->timing;
+                                $address=explode(",",$exp_edu_detail);
+                                ?>
+                                <?=(isset($address[0]))?$address[0]:""?>
+                            <br><span style="background-color: #0f0f0f;color: white"> <?=(isset($address[1]))?$address[1]:""?></span>
+                            <?php } ?>
+                            </td>
 
                         </tr>
                         </tbody>

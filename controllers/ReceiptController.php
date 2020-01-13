@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Doctors;
 use kartik\mpdf\Pdf;
 use Yii;
 use app\models\Receipts;
@@ -131,10 +132,14 @@ class ReceiptController extends Controller
 
 
 
-    public function actionReport() {
+    public function actionReport($id) {
+        $model  = $this->findModel($id);
         // get your HTML raw content without any layouts or scripts
         //return$this->render('_reportView');
-        $content = $this->renderPartial('_reportView');
+       /*  echo "<pre>";
+            print_r($model->patient);
+            die();*/
+        $content = $this->renderPartial('_reportView',['model'=>$model]);
 
         // setup kartik\mpdf\Pdf component
         $pdf = new Pdf([
@@ -142,11 +147,11 @@ class ReceiptController extends Controller
             'mode' => Pdf::MODE_CORE,
             // A4 paper format
             'format' => Pdf::FORMAT_A4,
-            'marginTop' => 10    ,
+            'marginTop' => 15    ,
             'marginBottom' => 0    ,
             'marginLeft' => 5    ,
             'marginRight' => 5    ,
-            'defaultFontSize' => 100   ,
+            //'defaultFontSize' => 20   ,
             // portrait orientation
             'orientation' => Pdf::ORIENT_PORTRAIT,
             // stream to browser inline
