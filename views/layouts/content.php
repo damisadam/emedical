@@ -39,7 +39,7 @@ use dmstr\widgets\Alert;
     <div class="pull-right hidden-xs">
         <b>Version</b> 2.0
     </div>
-    <strong>Copyright &copy; 2014-2015.</strong> S.S. Hussain All rights
+    <strong>Copyright &copy; 2014-2015.</strong> <a href="mailto:sardoolsamina@gmail.com">S.S. Hussain</a>  All rights
     reserved.
 </footer>
 

@@ -139,7 +139,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="3" height="450px"></td>
+                <td colspan="3" height="400px"></td>
             </tr>
             <tr >
                 <td colspan="3" >

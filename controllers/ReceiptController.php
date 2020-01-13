@@ -170,7 +170,7 @@ class ReceiptController extends Controller
             // call mPDF methods on the fly
             'methods' => [
                 //'SetHeader'=>['Krajee Report Header'],
-                //'SetFooter'=>['{PAGENO}'],
+                'SetFooter'=>['Date:'.$model->created_at],
             ]
         ]);
 
