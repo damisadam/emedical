@@ -44,8 +44,15 @@ $this->params['breadcrumbs'][] = $this->title;
             //'special_instruction:ntext',
             'next_visit',
             'created_at',
+            [
+                'label' => 'Print',
+                'format' => 'raw',
+                'value' => function($mode){
+                return Html::a('Print me', ['/receipt/report?id='.$mode->id], ['class' => 'btn btn-success btn-xs']);
+                }
+            ],
 
-            ['class' => 'yii\grid\ActionColumn',      'template' => '{update} {view}'],
+            ['class' => 'yii\grid\ActionColumn',      'template' => '{report} {view}'],
         ],
     ]); ?>
 

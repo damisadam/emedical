@@ -16,7 +16,7 @@
                     </p>
                     <?php } ?>
                 </td>
-                <td width="100px"></td>
+                <td width="50px"></td>
                 <td width="305px">
                     <div style="">
                         <br>
@@ -43,19 +43,21 @@
                     <table class="tabless" style="width:  820px" >
                         <tbody >
                             <tr >
-                                <td width="70px" height="650px" style="border-right: 1px solid gray;vertical-align: top;">
+                                <td width="70px" height="650px" style="min-width: 70px;border-right: 1px solid gray;vertical-align: top;">
                                     <table width="100px">
                                         <tbody>
+                                        <tr>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        </tr>
                                             <tr>
-                                                <td  height="120" style="border-bottom: 1px solid gray;vertical-align: top;" >
-                                                    <span><?=$model->body_deail?></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td height="120" style="border-bottom: 1px solid gray;vertical-align: top;">
-                                                    <p><b>Diagnosis</b></p>
-                                                    <br/>
-                                                    <span><?=$model->diagnosis?></span>
+                                                <td  height="120" style=";border-bottom: 1px solid gray;vertical-align: top;" >
+                                                    <?php if(isset($model->body_deail)){
+                                                    $exp_edu_detail=$model->body_deail;
+                                                    $address=explode(",",$exp_edu_detail);
+                                                    foreach ($address as $addres){
+                                                    ?>
+                                                    <p><?=$addres?></p>
+                                                    <?php }} ?>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -66,6 +68,7 @@
                                                 </td>
                                             </tr>
 
+
                                             <tr>
                                                 <td height="120" style="border-bottom: 1px solid gray;vertical-align: top;">
                                                     <p><b>Test Advices</b></p>
@@ -73,6 +76,14 @@
                                                     <span><?=$model->test_advised?></span>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td height="120" style="border-bottom: 1px solid gray;vertical-align: top;">
+                                                    <p><b>Diagnosis</b></p>
+                                                    <br/>
+                                                    <span><?=$model->diagnosis?></span>
+                                                </td>
+                                            </tr>
+
                                             <tr>
                                                 <td height="120" style="vertical-align: top;">
                                                     <p><b>Clinical Note</b></p>
@@ -100,17 +111,17 @@
                                             <tr><td colspan="6" style="border-bottom: 1px solid gray;padding-top: -10px"><br></td></tr>
                                             <tr>
                                                 <td colspan="3" style="text-align: center;font-weight: bold">Medicines</td>
-                                                <td><b>Morning</b></td>
-                                                <td><b>Afternoon</b></td>
-                                                <td><b>Evening</b></td>
+                                                <td width="100px"><b>Morning</b></td>
+                                                <td width="120px" ><b>Afternoon</b></td>
+                                                <td width="10px"><b>Evening</b></td>
                                             </tr>
                                             <tr><td colspan="6"><br></td></tr>
                                             <?php foreach ($model->mediciness as $key=>$medicine) { if($medicine->medicine){ ?>
                                             <tr >
                                                 <td colspan="3" height="40px"><?=$medicine->medicine->name?></td>
-                                                <td><?=$medicine->morning?></td>
-                                                <td><?=$medicine->afternoon?></td>
-                                                <td><?=$medicine->evening?></td>
+                                                <td >&nbsp;&nbsp;&nbsp;&nbsp;<?=$medicine->morning?></td>
+                                                <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=$medicine->afternoon?></td>
+                                                <td  ><?=$medicine->evening?></td>
                                             </tr>
                                         <?php }} ?>
 
@@ -131,7 +142,7 @@
                         <tbody>
                             <tr>
                                 <td width="70%">Special Instruction:</td>
-                                <td width="30%" style="text-align: right">Next Visit:_________________</td>
+                                <td width="30%" style="text-align: right">Next Visit:<span style="text-decoration: underline"><?=($model->next_visit)?$model->next_visit:""?></span></td>
 
                             </tr>
                         </tbody>
@@ -139,7 +150,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="3" height="400px"></td>
+                <td colspan="3" height="250px"></td>
             </tr>
             <tr >
                 <td colspan="3" >

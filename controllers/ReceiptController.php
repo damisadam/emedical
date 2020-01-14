@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Doctors;
+use app\models\ReceiptMedicine;
 use kartik\mpdf\Pdf;
 use Yii;
 use app\models\Receipts;
@@ -66,9 +67,38 @@ class ReceiptController extends Controller
      */
     public function actionCreate()
     {
+        //echo "<pre>";
         $model = new Receipts();
+        $model->doctor_id=Receipts::find()->one()->id;
+        if(Yii::$app->request->isPost){
+            $data=Yii::$app->request->post();
+           /* print_r($data['pluse']);
+            die();*/
 
+            $detail='Pulse:'.$data['pluse'];
+            $detail.=',Temp:'.$data['temp'];
+            $detail.=',R/R:'.$data['rr'];
+            $detail.=',BP:'.$data['BP'];
+            $detail.=',Weight:'.$data['weight'];
+            $detail.=',Height:'.$data['height'];
+            $detail.=',BMI:'.$data['bmi'];
+            $model->body_deail=$detail;
+
+
+            print_r(Yii::$app->request->post());
+            //die();
+        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            foreach ($data['medi'] as $key=>$value){
+               $medi=new ReceiptMedicine();
+                $medi->receipt_id=$model->id;
+                $medi->medicine_id=$id=$value;
+                $medi->morning= $morning=$data['morning'][$key];
+                $medi->afternoon= $afternoon=$data['afternoon'][$key];
+                $medi->evening=  $evening=$data['evening'][$key];
+                $medi->save();
+
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

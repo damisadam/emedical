@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Print me', ['/receipt/report?id='.$model->id], ['class' => 'btn btn-success ']) ?>
     </p>
 
     <?= DetailView::widget([
