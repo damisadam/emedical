@@ -50,7 +50,7 @@
                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                         </tr>
                                             <tr>
-                                                <td  height="120" style=";border-bottom: 1px solid gray;vertical-align: top;" >
+                                                <td  height="120" style="border-bottom: 1px solid gray;vertical-align: top;" >
                                                     <?php if(isset($model->body_deail)){
                                                     $exp_edu_detail=$model->body_deail;
                                                     $address=explode(",",$exp_edu_detail);

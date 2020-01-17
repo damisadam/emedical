@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'patient_id',
                 'filter'=>$searchModel->getSpecialtiesList(),
                 'value' => function ($model) {   //<----- ERROR HERE!
-                    return $model->patient->name;
+                    return isset($model->patient)?$model->patient->name:"";
                 },
             ],
             //'patient_id',

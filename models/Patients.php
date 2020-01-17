@@ -35,7 +35,7 @@ class Patients extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['created_ate'], 'safe'],
             [['name', 'so_name', 'age', 'address'], 'string', 'max' => 255],
-            [['gender'], 'string', 'max' => 5],
+            [['gender'], 'string', 'max' => 10],
             [['phone'], 'string', 'max' => 20],
         ];
     }
