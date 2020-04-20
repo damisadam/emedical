@@ -88,7 +88,7 @@ class Receipts extends \yii\db\ActiveRecord
         return $data;
     }
 
-    public function getMediList(){
+   static public function getMediList(){
         return ArrayHelper::map(Medicines::find()->all(),'id','name');
     }
 }
