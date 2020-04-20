@@ -98,10 +98,6 @@ class ReceiptController extends Controller
             $detail.=',Height:'.$data['height'];
             $detail.=',BMI:'.$data['bmi'];
             $model->body_deail=$detail;
-
-
-            print_r(Yii::$app->request->post());
-            //die();
         }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             foreach ($data['medi'] as $key=>$value){
