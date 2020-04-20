@@ -81,7 +81,11 @@ class Receipts extends \yii\db\ActiveRecord
     }
 
     public function getSpecialtiesList(){
-        return ArrayHelper::map(Patients::find()->all(),'id','name');
+        $data=[];
+        foreach (Patients::find()->all() as $item){
+            $data[$item->id]=$item->id." ".$item->name;
+        }
+        return $data;
     }
 
     public function getMediList(){

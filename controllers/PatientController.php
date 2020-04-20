@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Medicines;
 use Yii;
 use app\models\Patients;
 use app\models\PatientsSearch;
@@ -14,6 +15,7 @@ use yii\filters\VerbFilter;
  */
 class PatientController extends Controller
 {
+    public $enableCsrfValidation=false;
     /**
      * {@inheritdoc}
      */
@@ -123,5 +125,44 @@ class PatientController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+
+    public function actionSave()
+    {
+        $data=Yii::$app->request->getRawBody();
+        $data=json_decode($data);
+        $data=$data->patient;
+
+       // print_r($data);die();
+        $model = new Patients();
+        $model->name=$data->name;
+        $model->so_name=$data->so;
+        $model->age=$data->age;
+        $model->phone=$data->phone;
+        $model->address=$data->address;
+        $model->gender=$data->gender;
+        if ($model->save()) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return Patients::findOne($model->id);
+        }
+
+    }
+
+    public function actionMedi()
+    {
+        $data=Yii::$app->request->getRawBody();
+        $data=json_decode($data);
+        $data=$data->medicine;
+
+       // print_r($data);die();
+        $model = new Medicines();
+        $model->name=$data->name;
+        $model->detail=$data->detail;
+        if ($model->save()) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return Medicines::findOne($model->id);
+        }
+
     }
 }

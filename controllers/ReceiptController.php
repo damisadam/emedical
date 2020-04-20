@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\Doctors;
+use app\models\Medicines;
+use app\models\Patients;
 use app\models\ReceiptMedicine;
 use kartik\mpdf\Pdf;
 use Yii;
@@ -11,6 +13,7 @@ use app\models\ReceiptsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * ReceiptController implements the CRUD actions for Receipts model.
@@ -27,9 +30,21 @@ class ReceiptController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'save' => ['POST'],
                 ],
             ],
         ];
+    }
+
+    public function actionPatients()
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return Patients::find()->all();
+    }
+    public function actionMedicines()
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return Medicines::find()->all();
     }
 
     /**
@@ -160,6 +175,10 @@ class ReceiptController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
+    public function actionForm()
+    {
+        return $this->renderPartial('_medicine');
+    }
 
 
     public function actionReport($id) {

@@ -28,7 +28,7 @@ class Medicines extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'detail'], 'required'],
+            [['name'], 'required'],
             [['detail'], 'string'],
             [['created_at'], 'safe'],
             [['name'], 'string', 'max' => 255],
