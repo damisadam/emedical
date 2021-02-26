@@ -29,9 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'phone',
             'tel',
             'timing',
-            'header_detail',
             'address',
-            'create_at',
+            'created_at',
         ],
     ]) ?>
 

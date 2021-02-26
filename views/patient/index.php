@@ -27,16 +27,30 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
+            'mrn',
             'name',
             //'so_name',
-            'age',
-            'gender',
             'phone',
             //'address',
-            'created_ate:datetime',
+            'created_at:datetime',
+
+            [
+                'label' => 'Create Visits',
+                'format' => 'raw',
+                'value' => function($mode){
+                    return Html::a('Create Visits', ['/patient-visits/visit?id='.$mode->id], ['class' => 'btn btn-success btn-xs']);
+                }
+            ],
+            [
+                'label' => 'Visits',
+                'format' => 'raw',
+                'value' => function($mode){
+                    return Html::a('Visits', ['/patient-visits?id='.$mode->id], ['class' => 'btn btn-success btn-xs']);
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn',
-                'template' => '{update} {view}'
+                'template' => '{update}'
 
             ],
         ],

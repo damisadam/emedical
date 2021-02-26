@@ -5,21 +5,23 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "medicines".
+ * This is the model class for table "patient_visits".
  *
  * @property int $id
- * @property string $name
- * @property string $detail
- * @property string $created_at
+ * @property int $patient_id
+ * @property string|null $summery
+ * @property int $status
+ * @property string|null $created_at
  */
-class Medicines extends \yii\db\ActiveRecord
+class PatientVisits extends \yii\db\ActiveRecord
 {
+    public $_status=[0=>'Pending',1=>'Processed'];
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'medicines';
+        return 'patient_visits';
     }
 
     /**
@@ -28,10 +30,10 @@ class Medicines extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['detail'], 'string'],
+            [['patient_id'], 'required'],
+            [['patient_id', 'status'], 'integer'],
+            [['summery'], 'string'],
             [['created_at'], 'safe'],
-            [['name'], 'string', 'max' => 255],
         ];
     }
 
@@ -42,8 +44,9 @@ class Medicines extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'detail' => 'Detail',
+            'patient_id' => '',
+            'summery' => 'Summery',
+            'status' => 'Status',
             'created_at' => 'Created At',
         ];
     }

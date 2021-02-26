@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Doctors;
+use app\models\PatientVisits;
 
 /**
- * DoctorsSearch represents the model behind the search form of `app\models\Doctors`.
+ * PatientVisitsSearch represents the model behind the search form of `app\models\PatientVisits`.
  */
-class DoctorsSearch extends Doctors
+class PatientVisitsSearch extends PatientVisits
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class DoctorsSearch extends Doctors
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name', 'exp_edu_detail', 'phone', 'tel', 'timing', 'header_detail', 'address', 'created_at'], 'safe'],
+            [['id', 'patient_id', 'status'], 'integer'],
+            [['summery', 'created_at'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class DoctorsSearch extends Doctors
      */
     public function search($params)
     {
-        $query = Doctors::find();
+        $query = PatientVisits::find();
 
         // add conditions that should always apply here
 
@@ -59,16 +59,12 @@ class DoctorsSearch extends Doctors
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'patient_id' => $this->patient_id,
+            'status' => $this->status,
             'created_at' => $this->created_at,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'exp_edu_detail', $this->exp_edu_detail])
-            ->andFilterWhere(['like', 'phone', $this->phone])
-            ->andFilterWhere(['like', 'tel', $this->tel])
-            ->andFilterWhere(['like', 'timing', $this->timing])
-            ->andFilterWhere(['like', 'header_detail', $this->header_detail])
-            ->andFilterWhere(['like', 'address', $this->address]);
+        $query->andFilterWhere(['like', 'summery', $this->summery]);
 
         return $dataProvider;
     }

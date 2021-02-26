@@ -5,21 +5,22 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "medicines".
+ * This is the model class for table "tokens".
  *
  * @property int $id
- * @property string $name
- * @property string $detail
- * @property string $created_at
+ * @property int $number
+ * @property string|null $created_at
+ * @property int|null $patient_id
+ * @property string|null $status
  */
-class Medicines extends \yii\db\ActiveRecord
+class Tokens extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'medicines';
+        return 'tokens';
     }
 
     /**
@@ -28,10 +29,10 @@ class Medicines extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['detail'], 'string'],
+            [['number'], 'required'],
+            [['number', 'patient_id'], 'integer'],
             [['created_at'], 'safe'],
-            [['name'], 'string', 'max' => 255],
+            [['status'], 'string', 'max' => 5],
         ];
     }
 
@@ -42,11 +43,13 @@ class Medicines extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'detail' => 'Detail',
+            'number' => 'Number',
             'created_at' => 'Created At',
+            'patient_id' => 'Patient ID',
+            'status' => 'Status',
         ];
     }
+
     public function beforeSave($insert)
     {
         if($insert){

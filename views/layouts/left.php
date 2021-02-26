@@ -36,10 +36,9 @@ use yii\helpers\Html;
                 'items' => [
                     ['label' => 'Dashboard', 'options' => ['class' => 'header']],
                     ['label' => 'Home','icon' => 'dashboard', 'url' => ['/site/index']],
-                    ['label' => 'Doctor', 'icon' => 'file-code-o', 'url' => ['/doctor']],
+                    ['label' => 'Doctors', 'icon' => 'file-code-o', 'url' => ['/doctor']],
                     ['label' => 'Patients', 'icon' => 'users', 'url' => ['/patient']],
-                    ['label' => 'Medicines', 'icon' => 'users', 'url' => ['/medicine']],
-                    ['label' => 'Receipts', 'icon' => 'dashboard', 'url' => ['/receipt']],
+                    ['label' => 'Tokens', 'icon' => 'repeat', 'url' => ['/tokens']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                 /*    Yii::$app->user->isGuest ? (
                     ['label' => 'Login', 'url' => ['/site/login']]

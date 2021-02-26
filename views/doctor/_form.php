@@ -22,7 +22,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'timing')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'header_detail')->textarea(['rows' => 6])?>
 
     <?= $form->field($model, 'address')->textarea(['rows' => 6]) ?>
 

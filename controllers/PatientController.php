@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Medicines;
+use app\models\PatientVisits;
 use Yii;
 use app\models\Patients;
 use app\models\PatientsSearch;
@@ -69,7 +70,13 @@ class PatientController extends Controller
         $model = new Patients();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            $visits=new PatientVisits();
+            $visits->patient_id=$model->id;
+            $visits->status=0;
+            $visits->save();
+
+            Yii::$app->session->setFlash('success', "Patient visit is created.");
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -89,7 +96,8 @@ class PatientController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', "Patient record is updated.");
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
@@ -107,7 +115,7 @@ class PatientController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        Yii::$app->session->setFlash('success', "Patient record is deleted.");
         return $this->redirect(['index']);
     }
 

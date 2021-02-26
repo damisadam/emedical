@@ -18,7 +18,7 @@ class PatientsSearch extends Patients
     {
         return [
             [['id'], 'integer'],
-            [['name', 'so_name', 'age', 'gender', 'phone', 'address', 'created_ate'], 'safe'],
+            [['name', 'so_name', 'age', 'gender', 'phone', 'address', 'created_at','mrn'], 'safe'],
         ];
     }
 
@@ -59,7 +59,7 @@ class PatientsSearch extends Patients
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_ate' => $this->created_ate,
+            'created_at' => $this->created_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

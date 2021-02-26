@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Doctors;
-use app\models\DoctorsSearch;
+use app\models\Tokens;
+use app\models\TokensSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DoctorController implements the CRUD actions for Doctors model.
+ * TokensController implements the CRUD actions for Tokens model.
  */
-class DoctorController extends Controller
+class TokensController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class DoctorController extends Controller
     }
 
     /**
-     * Lists all Doctors models.
+     * Lists all Tokens models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new DoctorsSearch();
+        $searchModel = new TokensSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class DoctorController extends Controller
     }
 
     /**
-     * Displays a single Doctors model.
+     * Displays a single Tokens model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,17 +58,16 @@ class DoctorController extends Controller
     }
 
     /**
-     * Creates a new Doctors model.
+     * Creates a new Tokens model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Doctors();
+        $model = new Tokens();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', "Doctors record is created.");
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -77,7 +76,7 @@ class DoctorController extends Controller
     }
 
     /**
-     * Updates an existing Doctors model.
+     * Updates an existing Tokens model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -88,8 +87,7 @@ class DoctorController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', "Doctors record is updated.");
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -98,7 +96,7 @@ class DoctorController extends Controller
     }
 
     /**
-     * Deletes an existing Doctors model.
+     * Deletes an existing Tokens model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,20 +105,20 @@ class DoctorController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        Yii::$app->session->setFlash('success', "Doctors record is deleted.");
+
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Doctors model based on its primary key value.
+     * Finds the Tokens model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Doctors the loaded model
+     * @return Tokens the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Doctors::findOne($id)) !== null) {
+        if (($model = Tokens::findOne($id)) !== null) {
             return $model;
         }
 

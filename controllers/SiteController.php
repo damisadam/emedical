@@ -66,9 +66,9 @@ class SiteController extends Controller
     {
         $todat=date('Y-m-d');
         $patients=Patients::find()->count();
-        $medi=Medicines::find()->count();
-        $rec=Receipts::find()->count();
-        $rect=Receipts::find()->where(['LIKE','created_at', '%'.$todat . '%', false])->count();
+
+       /* $rec=Receipts::find()->count();
+        $rect=Receipts::find()->where(['LIKE','created_at', '%'.$todat . '%', false])->count();*/
 
         if (Yii::$app->user->isGuest) {
             return $this->redirect("/site/login");
@@ -76,9 +76,9 @@ class SiteController extends Controller
         return $this->render('index',
         [
             'patients'=>$patients,
-            'medi'=>$medi,
-            'rec'=>$rec,
-            'rect'=>$rect,
+            'medi'=>0,
+            'rec'=>0,
+            'rect'=>0,
         ]
         );
     }
